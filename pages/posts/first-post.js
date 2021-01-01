@@ -9,6 +9,6 @@ export default function FirstPost() {
           <a>Back to home</a>
         </Link>
       </h2>
-    </Link>
+    </>
   );
 }
