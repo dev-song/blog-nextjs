@@ -47,6 +47,14 @@
   margin: 0 0 1.2rem;
 }
 
+.listItemLine {
+  margin: 0.5rem 0;
+}
+
+.listItemText:nth-of-type(n + 2) {
+  margin-left: 0.5rem;
+}
+
 .lightText {
   color: #999;
 }
