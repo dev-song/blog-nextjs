@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData
@@ -19,14 +19,17 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default function Post({ postData: { title, id, date } }) {
+export default function Post({ postData: { title, id, date, contentsInHtml } }) {
   return (
     <Layout>
-      {title}
-      <br />
-      {id}
-      <br />
-      {date}
+      <h1>{title}</h1>
+      <p>
+        <span>{date}</span>
+        <span>{id}</span>
+      </p>
+      <div
+        dangerouslySetInnerHTML={{ __html: contentsInHtml }}
+      />
     </Layout>
   )
 }
