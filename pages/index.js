@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Layout, { pageTitle } from '../components/layout'
 
 import utilStyles from '../styles/utils.module.css'
+import Date from '../components/date'
 
 import { getSortedPostsData } from '../lib/posts'
 
@@ -31,15 +32,15 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <p className={utilStyles.listItemLine}>{title}</p>
-              <div>
-                <span className={utilStyles.listItemText}>{id}</span>
-                <span className={utilStyles.listItemText}>{date}</span>
-              </div>
-            </li>
-          ))
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
 
-          }
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
         </ul>
       </section>
     </Layout>
